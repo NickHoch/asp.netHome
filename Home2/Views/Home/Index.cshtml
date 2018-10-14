@@ -1,0 +1,210 @@
+﻿@section header {
+    @*if (Request.Cookies["Token"] != null)
+    {
+    var token = Request.Cookies["Token"].Value;
+    if (!_ctx.Users.Any(x => x.Token == token))
+    {*@
+    @if (Request.Cookies["Token"]?.Expires != DateTime.MinValue.Date)
+    {
+        using (Html.BeginForm("LogOut", "Home", FormMethod.Post))
+        {
+            <p>User: @Request.Cookies["User"].Value</p>
+            <button class="btn btn-danger logOut" id="logOut">Exit</button>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
+        {
+            @*@Html.Label("Login")
+                @Html.TextBox("Login")
+                @Html.Label("Password")
+                @Html.Password("Password")*@
+            <label for="login">Login: </label>
+            <input id="login" name="login" type="text" />
+            <label for="password">Password: </label>
+            <input id="password" name="password" type="password" />
+            <button class="btn btn-danger" id="login" value="Sign in">Sign in</button>
+        }
+    }
+    }
+
+    @*<div class="row">
+            <div id="popUpWin" title="Incorrect credentials">
+                <p>You enter invalid login or password. Please try again</p>
+            </div>
+        </div>
+
+
+        @section Scripts{
+            <script type="text/javascript">
+                $(function () {
+                    $('#popUpWin').dialog({
+                        //autoOpen=false,
+                        width: 200,
+                        height: 200,
+                        show: {
+                            effect: 'blind',
+                            duretion: 200
+                        };
+                        hide: {
+                            effect: 'exlode',
+                            duration: 200
+                        }
+                    });
+                    $('#login').click(function () {
+                        $('#popUpWin').dialog("open");
+                    });
+                });
+
+
+            </script>
+        }*@
+
+    <div class="row body">
+        <div class="col-lg-8 col-md-12 frame">
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div>
+                        <form>
+                            <fieldset>
+                                <label for="basis">Select a basis</label>
+                                <select id="basis">
+                                    <option value="1.1">Mayonnaise</option>
+                                    <option value="1.15">Tomatoes</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div>
+                        <form>
+                            <fieldset>
+                                <label for="size">Size</label>
+                                <select id="size">
+                                    <option value="20">Small - 25cm</option>
+                                    <option value="25">Medium - 40cm</option>
+                                    <option value="30">Large - 60cm</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div>
+                        <form>
+                            <fieldset>
+                                <label for="sauce">Sauce</label>
+                                <select id="sauce">
+                                    <option value="8">Barbecue</option>
+                                    <option value="7">Mustard</option>
+                                    <option value="8">Mayonnaise</option>
+                                    <option value="7">Acute</option>
+                                    <option value="8">Cheesy</option>
+                                    <option value="7">Garlic</option>
+                                </select>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div style="margin: 10px">
+                        <p>Available ingredients</p>
+                    </div>
+                    <div class="container" id="availableIngrid">
+                        <div class="ingrid" data-name="Pineapple" data-price="600" data-weight="50">
+                            <span class="text">
+                                Pineapple
+                                <span class="ing-weight">(50g)</span>
+                                <div class="pull-right ing-price">6uah</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Bolognese (stuffing, carrots, bow, tomato)" data-price="600" data-weight="50">
+                            <span class="text">
+                                Bolognese (stuffing, carrots, bow, tomato)
+                                <span class="ing-weight">(50g)</span>
+                                <div class="pull-right ing-price">6uah</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Bacon" data-price="650" data-weight="50">
+                            <span class="text">
+                                Bacon
+                                <span class="ing-weight">(50g)</span>
+                                <div class="pull-right ing-price">6uah 50c</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Brynza" data-price="600" data-weight="80">
+                            <span class="text">
+                                Brynza
+                                <span class="ing-weight">(80g)</span>
+                                <div class="pull-right ing-price">6uah</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Olive" data-price="250" data-weight="15">
+                            <span class="text">
+                                Olive
+                                <span class="ing-weight">(15g)</span>
+                                <div class="pull-right ing-price">2uah 50c</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Corn" data-price="250" data-weight="30">
+                            <span class="text">
+                                Corn
+                                <span class="ing-weight">(30g)</span>
+                                <div class="pull-right ing-price">2uah 50c</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Tomato" data-price="400" data-weight="50">
+                            <span class="text">
+                                Tomato
+                                <span class="ing-weight">(50g)</span>
+                                <div class="pull-right ing-price">4uah</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Ham" data-price="750" data-weight="60">
+                            <span class="text">
+                                Ham
+                                <span class="ing-weight">(60g)</span>
+                                <div class="pull-right ing-price">7uah 50c</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Champignons" data-price="450" data-weight="40">
+                            <span class="text">
+                                Champignons
+                                <span class="ing-weight">(40g)</span>
+                                <div class="pull-right ing-price">4uah 50c</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Salami" data-price="600" data-weight="50">
+                            <span class="text">
+                                Salami
+                                <span class="ing-weight">(50g)</span>
+                                <div class="pull-right ing-price">6uah</div>
+                            </span>
+                        </div>
+                        <div class="ingrid" data-name="Chicken" data-price="500" data-weight="40">
+                            <span class="text">
+                                Chicken
+                                <span class="ing-weight">(40g)</span>
+                                <div class="pull-right ing-price">5uah</div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <div style="height: 234px">
+                        <h2 class="text" style="text-align: center">Pizza by your own recipe</h2>
+                        <hr>
+                        <p>
+                            Collect pizza from ingredients that you choose yourself. Eat only what you love! The quantity
+                            of ingredients is agreed with the operator when making your order.
+                        </p>
+                        <hr>
+                        <p class="pull-right ing-price cheque" id="price">uah</p>
+                        <p class="cheque" style="display: inline-block;">Sum(</p>
+                        <p class="cheque" style="display: inline-block;" id="weight"></p>
+                        <p class="cheque" style="display: inline-block;"> g ingredients):</p>
+                        <div style="text-align:center; margin:auto;">
+                            <button id="makeOrder">Make order</button>
+                        </div>
+                        <p>Selected ingredients</p>
+                    </div>
+                    <div class="container" id="selectedIngrid"></div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,104 @@
+﻿.header-content {
+    color: white;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 10px 15px 0px 0px;
+}
+
+.footer {
+    color: yellow;
+    font-weight: 700;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.logOut {
+    height:30px;
+    width: 70px;
+    margin: 0px 10px;
+}
+
+.body {
+    display: flex;
+    justify-content: center;
+}
+
+.frame {
+    background-color: white;
+    position: relative;
+    height: auto;
+    padding: 8px 10px;
+    width: 60%;
+    max-width: 1700px;
+    border-radius: 15px;
+    opacity: 0.8;
+}
+
+.body-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url(http://www.sportpizza.by/public/img/body-bg-pizza.jpg) center 0 no-repeat fixed #222;
+    z-index: -1;
+}
+
+label {
+    font-family: "Trebuchet MS", sans-serif !important;
+    font-size: 14px;
+    margin: 10px;
+}
+
+select {
+    width: 100%;
+    height: 34px;
+    padding: 6px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.container {
+    width: 100%;
+    height: 400px;
+    margin: 5px 0px;
+    padding: 10px 13px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(242, 186, 22, .95);
+    box-shadow: inset 0px 0 20px 2px black;
+}
+
+.ingrid {
+    width: 100%;
+    height: 31.2px;
+    margin: 3px 0px;
+    border: 1px solid rgb(146, 100, 0);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.text {
+    padding-left: 10px;
+    vertical-align: middle;
+    line-height: 30px;
+}
+
+.ing-price {
+    color: #ED2222;
+}
+
+.pull-right {
+    float: right !important;
+    padding: 0px 10px;
+}
+.cheque {
+    font-size: 16px;
+}
+hr {
+    border-width: 2px;
+}
