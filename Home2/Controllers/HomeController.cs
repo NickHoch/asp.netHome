@@ -5,13 +5,46 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Home2.Models;
 
 namespace Home2.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult MakeOrder(FormCollection formCollection)
+        {
+            Session["Order"] = new Order
+            {
+                User = new Models.User
+                {
+                    Name = "Vashya",
+                    PhoneNumber = "+380988877755"
+                },
+                Items = new Dictionary<Product, int>()
+                {
+                    {                        
+                        new Product(Convert.ToInt32(formCollection["Products"]), "test"),
+                        Convert.ToInt32(formCollection["quantity"])
+                    }
+                }
+            };
+            return View("Index");
+        }
         public ActionResult Index()
         {
+            HomeViewModel model = new HomeViewModel();
+            model.AvailableProducts.AddRange(new List<Product>
+            {
+                new Product(1, "Pizza Ukrainian"),
+                new Product(2, "Pizza Hawaiian"),
+                new Product(3, "Pizza Milano")
+            });
+
+            if (Session["Order"] != null)
+            {
+                model.Order = Session["Order"] as Order;
+            }
+            ViewBag.Products = new SelectList(model.AvailableProducts, "Id", "Name", 1);
             return View();
         }
         public ActionResult SignIn()

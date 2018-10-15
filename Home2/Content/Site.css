@@ -7,6 +7,19 @@
     padding: 10px 15px 0px 0px;
 }
 
+.body-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    margin: 0px 15px;
+}
+
+.drop-down-list {
+    width: 200px;
+    margin: 0px 15px;
+}
+
 .footer {
     color: yellow;
     font-weight: 700;
